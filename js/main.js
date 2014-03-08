@@ -5,12 +5,33 @@
 
   angular
 
-    .module( 'rainbow', ['firebase'] )
+    .module( 'rainbow', [] )
 
-    .controller('MainCtrl', function($scope, $firebase){
-      var userRef = new Firebase( 'blinding-fire-7767.firebaseIO.com/users' );
-      $scope.users = $firebase( userRef );
-      console.log( $scope.users );
+    .service('dataService', function(){
+      this.currentUser = {
+        firstname: 'Jane',
+        lastname: 'Doe',
+        city: 'Alexandria',
+        state: 'VA',
+        kids: [
+          {
+            name: 'billy'
+          },
+          {
+            name: 'sarah'
+          }
+        ]
+      };
+    })
+
+    .controller('MainCtrl', function($scope, dataService){
+
+      $scope.currentUser = dataService.currentUser;
+
+    })
+
+    .controller('PlateCtrl', function($scope){
+      console.log( $scope.$parent.currentUser );
     });
 
 }());

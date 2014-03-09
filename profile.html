@@ -39,6 +39,7 @@
 
 
   <div class="container">
+
     <section id="header">
       <div class="row">
         <div class="col-md-2 col-md-offset-1">
@@ -54,57 +55,24 @@
       </div>
     </section>
 
-<!--     <section>
-      <ul>
-        <li><a ng-click="filterCategory('fruit')" data-category="fruit" href="#">Fruit</a></li>
-        <li><a ng-click="filterCategory('vegetables')" data-category="vegetables" href="#">Vegetables</a></li>
-        <li><a ng-click="filterCategory('poultry')" data-category="fruit" href="#">Poultry</a></li>
-      </ul>
-    </section> -->
-
-    <section class="items-wrapper">
+    <section id="form-section">
       <div class="row">
-        <div
-          ng-repeat="item in items | category : 'fruit'"
-          class="item item-{{item.id}} col-md-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <img  src="http://placekitten.com/200/200" />
-          <p>{{ item.name }} <span>${{ item.price }}</span></p>
-        </div>
-      </div>
+        <div class="col-md-4 col-md-offset-1">
+          <h3>{{currentUser.firstname}} {{currentUser.lastname}}</h3>
+          <h5>{{currentUser.email}}</h5>
+          <h5>{{currentUser.phone}}</h5>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49740.1171501331!2d-77.09082345000003!3d38.81511349999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b64d3e93a4abf1%3A0xd7f52686dbc1012c!2sAlexandria%2C+VA!5e0!3m2!1sen!2sus!4v1394335942379" width="600" height="450" frameborder="0" style="border:0"></iframe>
 
-      <div class="row">
-        <div
-          ng-repeat="item in items | category : 'vegetables'"
-          class="item item-{{item.id}} col-md-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <img src="http://placekitten.com/200/200" />
-          <p>{{ item.name }} <span>${{ item.price }}</span></p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div
-          ng-repeat="item in items | category : 'poultry'"
-          class="item item-{{item.id}} col-md-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <img src="http://placekitten.com/200/200" />
-          <p>{{ item.name }} <span>${{ item.price }}</span></p>
-        </div>
-      </div>
-
-    </section>
-
-    <section>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <a href="#" class="btn btn-block btn-lg btn-primary">Reserve</a>
+          <ul class="fav-items">
+            <li class="fav-item" ng-repeat="item in currentUser.favoriteItems">
+              <span class="fui-heart"></span><span class="item-name">{{ item.name }}</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
+
+
   </div>
 
 

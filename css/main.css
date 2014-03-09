@@ -67,8 +67,39 @@
 
 .item {
   cursor:pointer;
+  text-align: center;
+}
+
+.item span {
+  font-weight: bold;
 }
 
 .item img.selected {
   border: solid #A5F3E3 4px;
 };
+
+.item p {
+  text-align: center;
+}
+
+/* Profile */
+
+#form-section {
+  padding:30px;
+  margin-top:120px;
+}
+
+input[type=text], input[type=email] {
+  width: 80%;
+  text-align: center;
+}
+
+ul.fav-items {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+}
+
+.fav-item .item-name {
+  padding-left:15px;
+}

@@ -9,15 +9,22 @@
 
     .service('uiService', function(){
       this.init = function() {
-        $('.item').click(function(){
-          var img = $(this).find('img');
 
-          if ( $(img).hasClass('selected') ){
-            $(img).removeClass('selected');
-          } else {
-            $(img).addClass('selected');
-          }
+        $(function(){
+          $('.item').click(function(){
+            console.log('hi')
+            var img = $(this).find('img');
+
+            if ( $(img).hasClass('selected') ){
+              $(img).removeClass('selected');
+            } else {
+              $(img).addClass('selected');
+            }
+          });
         });
+
+
+
       };
     })
 
@@ -63,6 +70,6 @@
       $scope.currentUser = dataService.currentUser;
       $scope.items = dataService.items;
 
-    })
+    });
 
 }());

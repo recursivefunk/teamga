@@ -32,115 +32,53 @@
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
       <h3>Cart</h3>
       <a href="#"
-        ng-repeat="item in cart">{{ item.quantity}} {{ item.name }}(s) - ${{ getItemSubTotal(item) }}
-        <span class="fui-cross" ng-click="removeItem(item)"></span>
-      </a>
+        ng-repeat="item in cart">{{ item.quantity}} {{ item.name }}(s) - ${{ getItemSubTotal(item) }}</a>
+
       <h3>${{ getCartTotal() }}</h3>
     </nav>
 
 
   <div class="container">
+
     <section id="header">
       <div class="row">
-        <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1">
-          <a href="/profile.html"><img src="images/crystal.jpg" alt=""></a>
-        </div>
-
-        <div style="padding-top:10px;" class="col-md-1">
-          <ul id="menu-links">
-            <li><a href="/profile.html">Profile</a></li>
-            <li><a href="/">Shop</a></li>
-            <li><a href="/about.html">About</a></li>
-          </ul>
-        </div>
-
-        <div class="col-md-3">
-          <img src="images/logo.jpg" alt="">
-        </div>
-
-        <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-3">
-          <h3>${{ leftInBudget() }} / <span>${{totalBudget}}</span></h3>
-          <a id="showRight" href="#">
-            <span class="shopping-cart icon-cart-4"></span>
-          </a>
+        <div class="col-md-4 col-md-offset-4">
+          <img class="logo-center" src="images/logo.jpg" alt="">
         </div>
       </div>
     </section>
 
-<!--     <section>
-      <ul>
-        <li><a ng-click="filterCategory('fruit')" data-category="fruit" href="#">Fruit</a></li>
-        <li><a ng-click="filterCategory('vegetables')" data-category="vegetables" href="#">Vegetables</a></li>
-        <li><a ng-click="filterCategory('poultry')" data-category="fruit" href="#">Poultry</a></li>
-      </ul>
-    </section> -->
-
-    <section class="items-wrapper">
-      <div class="row">
-        <div
-          ng-repeat="item in items | category : 'fruit'"
-          class="item item-{{item.id}} col-md-2 col-sm-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1 col-sm-offset-1': $index==0}">
-          <p>{{ item.name }}</p>
-          <img
-            class="img-responsive"
-            ng-style="itemClass(item)"
-            ng-src="{{item.src}}" />
-          <p><span>${{ item.price }}</span> |
-          <span ng-style="getIsFavStyle(item)" class="fui-heart"></span> |
-          <a href="/recipe.html">Recipe Ideas</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row">
-        <div
-          data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"
-          ng-repeat="item in items | category : 'vegetables'"
-          class="item item-{{item.id}} col-md-2 col-sm-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <p>{{ item.name }}</p>
-          <img
-            class="img-responsive"
-            ng-style="itemClass(item)"
-            ng-src="{{item.src}}" />
-          <p><span>${{ item.price }}</span> |
-          <span ng-style="getIsFavStyle(item)" class="fui-heart"></span> |
-          <a href="/recipe.html">Recipe Ideas</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row">
-        <div
-          ng-repeat="item in items | category : 'poultry'"
-          class="item item-{{item.id}} col-md-2 col-sm-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <p>{{ item.name }}</p>
-          <img
-            class="img-responsive"
-            ng-style="itemClass(item)"
-            ng-src="{{item.src}}" />
-          <p><span>${{ item.price }}</span> |
-          <span ng-style="getIsFavStyle(item)" class="fui-heart"></span> |
-          <a href="/recipe.html">Recipe Ideas</a></p>
-        </div>
-      </div>
-
-    </section>
-
-    <section>
+    <section id="signup-form-section">
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
-          <a href="/confirm.html" class="btn btn-block btn-lg btn-primary">Reserve</a>
+          <form action="">
+            <p>
+              <input type="text" placeholder="First Name" />
+            </p>
+            <p>
+              <input type="text" placeholder="Last Name" />
+            </p>
+            <p>
+              <input type="email" placeholder="Email" />
+            </p>
+            <p>
+              <input type="text" placeholder="Zip Code" />
+            </p>
+            <p>
+              <input type="password" placeholder="Password" />
+            </p>
+            <p>
+              <input type="password" placeholder="Confirm Password" />
+            </p>
+            <p>
+              <a href="/profile.html" class="btn btn-block btn-lg btn-primary">Let's Go!</a>
+            </p>
+          </form>
         </div>
       </div>
     </section>
+
+
   </div>
 
 
@@ -160,7 +98,6 @@
   <!-- <script src="js/application.js"></script> -->
     <script src="js/classie.js"></script>
     <script>
-
       var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         menuRight = document.getElementById( 'cbp-spmenu-s2' ),
         menuTop = document.getElementById( 'cbp-spmenu-s3' ),

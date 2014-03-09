@@ -27,7 +27,7 @@
     <![endif]-->
   </head>
 
-<body ng-controller="MainCtrl" class="cbp-spmenu-push">
+<body ng-controller="ProfileCtrl" class="cbp-spmenu-push">
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
       <h3>Cart</h3>
@@ -35,11 +35,13 @@
         ng-repeat="item in cart">{{ item.quantity}} {{ item.name }}(s) - ${{ getItemSubTotal(item) }}
         <span class="fui-cross" ng-click="removeItem(item)"></span>
       </a>
+
       <h3>${{ getCartTotal() }}</h3>
     </nav>
 
 
   <div class="container">
+
     <section id="header">
       <div class="row">
         <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1">
@@ -67,77 +69,28 @@
       </div>
     </section>
 
-<!--     <section>
-      <ul>
-        <li><a ng-click="filterCategory('fruit')" data-category="fruit" href="#">Fruit</a></li>
-        <li><a ng-click="filterCategory('vegetables')" data-category="vegetables" href="#">Vegetables</a></li>
-        <li><a ng-click="filterCategory('poultry')" data-category="fruit" href="#">Poultry</a></li>
-      </ul>
-    </section> -->
-
-    <section class="items-wrapper">
+    <section id="form-section">
       <div class="row">
-        <div
-          ng-repeat="item in items | category : 'fruit'"
-          class="item item-{{item.id}} col-md-2 col-sm-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1 col-sm-offset-1': $index==0}">
-          <p>{{ item.name }}</p>
-          <img
-            class="img-responsive"
-            ng-style="itemClass(item)"
-            ng-src="{{item.src}}" />
-          <p><span>${{ item.price }}</span> |
-          <span ng-style="getIsFavStyle(item)" class="fui-heart"></span> |
-          <a href="/recipe.html">Recipe Ideas</a></p>
-        </div>
-      </div>
+        <div class="col-md-6 col-md-offset-1">
+          <h4>Delicious Zucchini pizza thingy</h4>
+          <img class="img-responsive" src="images/zucchini-pizza.jpg" alt="">
+          <p>
+            <strong style="text-decoration:underline;">Ingredients:</strong>
+            <ul>
+              <li>A Zucchini</li>
+              <li>Some cheese</li>
+              <li>6 Olives</li>
+            </ul>
+          </p>
 
-      <hr>
+          <p>
+            <strong style="text-decoration:underline;">Instructions:</strong>
+            <ul>
+              <li>1.) Make it</li>
+            </ul>
+          </p>
 
-      <div class="row">
-        <div
-          data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"
-          ng-repeat="item in items | category : 'vegetables'"
-          class="item item-{{item.id}} col-md-2 col-sm-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <p>{{ item.name }}</p>
-          <img
-            class="img-responsive"
-            ng-style="itemClass(item)"
-            ng-src="{{item.src}}" />
-          <p><span>${{ item.price }}</span> |
-          <span ng-style="getIsFavStyle(item)" class="fui-heart"></span> |
-          <a href="/recipe.html">Recipe Ideas</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row">
-        <div
-          ng-repeat="item in items | category : 'poultry'"
-          class="item item-{{item.id}} col-md-2 col-sm-2"
-          ng-click="addOrRemoveItem( item )"
-          ng-class="{'col-md-offset-1': $index==0}">
-          <p>{{ item.name }}</p>
-          <img
-            class="img-responsive"
-            ng-style="itemClass(item)"
-            ng-src="{{item.src}}" />
-          <p><span>${{ item.price }}</span> |
-          <span ng-style="getIsFavStyle(item)" class="fui-heart"></span> |
-          <a href="/recipe.html">Recipe Ideas</a></p>
-        </div>
-      </div>
-
-    </section>
-
-    <section>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <a href="/confirm.html" class="btn btn-block btn-lg btn-primary">Reserve</a>
+          <p><strong>Done!</strong></p>
         </div>
       </div>
     </section>
@@ -160,7 +113,6 @@
   <!-- <script src="js/application.js"></script> -->
     <script src="js/classie.js"></script>
     <script>
-
       var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         menuRight = document.getElementById( 'cbp-spmenu-s2' ),
         menuTop = document.getElementById( 'cbp-spmenu-s3' ),

@@ -7,6 +7,20 @@
 
     .module( 'rainbow', [] )
 
+    .service('uiService', function(){
+      this.init = function() {
+        $('.item').click(function(){
+          var img = $(this).find('img');
+
+          if ( $(img).hasClass('selected') ){
+            $(img).removeClass('selected');
+          } else {
+            $(img).addClass('selected');
+          }
+        });
+      };
+    })
+
     .service('dataService', function(){
       this.currentUser = {
         firstname: 'Jane',
@@ -22,31 +36,33 @@
           }
         ]
       };
+
+      this.items = [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        }
+      ];
     })
 
-    .controller('MainCtrl', function($scope, dataService){
+    .controller('MainCtrl', function($scope, dataService, uiService){
+
+      uiService.init();
 
       $scope.currentUser = dataService.currentUser;
-      $scope.amountEntered = 0;
-      $scope.options = [
-        'banannas',
-        'apples',
-        'oranges'
-      ];
-      $scope.$watch('amountEntered', function(newAmount, oldAmount){
-        if ( newAmount >= 10 ) {
-          $scope.optionAfforded = $scope.options[ 0 ];
-        } else if ( newAmount <= 9 && newAmount >= 5 ) {
-          $scope.optionAfforded = $scope.options[ 1 ];
-        } else {
-          $scope.optionAfforded =  'nada';
-        }
-      });
+      $scope.items = dataService.items;
 
     })
-
-    .controller('PlateCtrl', function($scope){
-      console.log( $scope.$parent.currentUser );
-    });
 
 }());

@@ -12,8 +12,13 @@
 
     <!-- Loading Flat UI -->
     <link href="css/flat-ui.css" rel="stylesheet">
-
+    <link href="css/fonts.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -22,19 +27,71 @@
     <![endif]-->
   </head>
 
-<body ng-controller="MainCtrl">
+<body ng-controller="MainCtrl" class="cbp-spmenu-push">
 
-  <h1>Welcome, {{ currentUser.firstname }}</h1>
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+      <h3>Cart</h3>
+      <a href="#">apples</a>
+      <a href="#">pickles</a>
+      <a href="#">oranges</a>
+    </nav>
 
-  <input type="text" ng-model="amountEntered" />
 
-  <h1>You can afford {{ optionAfforded }}</h1>
+  <div class="container">
+    <section id="header">
+      <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+          <img src="images/crystal.jpg" alt="">
+        </div>
 
-  <ul>
-    <li ng-repeat="kid in currentUser.kids">{{ kid.name }}</li>
-  </ul>
+        <div class="col-md-3 col-md-offset-5">
+          <h3>$150 / <span>$200</span></h3>
+          <a id="showRight" href="#">
+            <span class="shopping-cart icon-cart-4"></span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <div ng-controller="PlateCtrl"></div>
+    <section class="items-wrapper">
+      <div class="row">
+        <div
+          ng-repeat="item in items"
+          class="item col-md-2"
+          ng-class="{'col-md-offset-1': $index==0}">
+          <img src="http://placekitten.com/200/200" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          ng-repeat="item in items"
+          class="item col-md-2"
+          ng-class="{'col-md-offset-1': $index==0}">
+          <img src="http://placekitten.com/200/200" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          ng-repeat="item in items"
+          class="item col-md-2"
+          ng-class="{'col-md-offset-1': $index==0}">
+          <img src="http://placekitten.com/200/200" />
+        </div>
+      </div>
+
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <a href="#" class="btn btn-block btn-lg btn-primary">Reserve</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
 
 
   <script src="js/jquery-1.8.3.min.js"></script>
@@ -50,6 +107,44 @@
   <script src="js/jquery.placeholder.js"></script>
   <script src="http://vjs.zencdn.net/4.3/video.js"></script>
   <!-- <script src="js/application.js"></script> -->
+    <script src="js/classie.js"></script>
+    <script>
+      var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+        menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+        menuTop = document.getElementById( 'cbp-spmenu-s3' ),
+        menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
+        showRight = document.getElementById( 'showRight' ),
+
+        body = document.body;
+
+
+      showRight.onclick = function() {
+        classie.toggle( this, 'active' );
+        classie.toggle( menuRight, 'cbp-spmenu-open' );
+        disableOther( 'showRight' );
+      };
+
+      function disableOther( button ) {
+        if( button !== 'showLeft' ) {
+          classie.toggle( showLeft, 'disabled' );
+        }
+        if( button !== 'showRight' ) {
+          classie.toggle( showRight, 'disabled' );
+        }
+        if( button !== 'showTop' ) {
+          classie.toggle( showTop, 'disabled' );
+        }
+        if( button !== 'showBottom' ) {
+          classie.toggle( showBottom, 'disabled' );
+        }
+        if( button !== 'showLeftPush' ) {
+          classie.toggle( showLeftPush, 'disabled' );
+        }
+        if( button !== 'showRightPush' ) {
+          classie.toggle( showRightPush, 'disabled' );
+        }
+      }
+    </script>
   <script src="js/main.js"></script>
 </body>
 </html>
